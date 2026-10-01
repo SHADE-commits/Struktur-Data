@@ -88,6 +88,24 @@ void deleteLast() {
     bantu->next = NULL;
 }
 
+void isiDataAwal() {
+    const int N = 15;
+    string nim[N] = {
+        "103032500005","103032500041","103032500146","103032500149","103032500150",
+        "103032500153","103032500159","103032500176","103032500180","103032500191",
+        "103032540001","103032540002","103032540003","103032540004","103032540005"};
+    string nama[N] = {
+        "Fadhil Asyam Damanik","Rahsya Iman Dehavilland","Mahesa Putra Mulyawan",
+        "Gyio Rangga Satria Putra","Naufal Nafiz Faturrahman","Fazli Baktiadi",
+        "Matthew Glen Abram Pakpahan","Vendra Fausta Andrean","Dzaky Allam Shidiq",
+        "Nayla Novtiera Anjani","Fathin Arib Nurhumam","Ida Bagus Harell",
+        "Nigel William Pieters","Aqila Fathatulayya","Badriah Nuraini Rahayu"};
+    float persen[N] = {100,93.8,87.5,100,81.3,75,93.8,100,
+                       68.8,87.5,100,93.8,81.3,100,75};
+    for (int i = 0; i < N; i++) insertLast(nim[i], nama[i], persen[i]);
+    
+}
+
 int main() {
     isiDataAwal();   
     int pilih;
@@ -120,22 +138,4 @@ int main() {
 
     cout << "Program selesai.\n";
     return 0;
-}
-
-void isiDataAwal() {
-    const int N = 15;
-    string nim[N] = {
-        "103032500005","103032500041","103032500146","103032500149","103032500150",
-        "103032500153","103032500159","103032500176","103032500180","103032500191",
-        "103032540001","103032540002","103032540003","103032540004","103032540005"};
-    string nama[N] = {
-        "Fadhil Asyam Damanik","Rahsya Iman Dehavilland","Mahesa Putra Mulyawan",
-        "Gyio Rangga Satria Putra","Naufal Nafiz Faturrahman","Fazli Baktiadi",
-        "Matthew Glen Abram Pakpahan","Vendra Fausta Andrean","Dzaky Allam Shidiq",
-        "Nayla Novtiera Anjani","Fathin Arib Nurhumam","Ida Bagus Harell",
-        "Nigel William Pieters","Aqila Fathatulayya","Badriah Nuraini Rahayu"};
-    float persen[N] = {100,93.8,87.5,100,81.3,75,93.8,100,
-                       68.8,87.5,100,93.8,81.3,100,75};
-    for (int i = 0; i < N; i++) insertLast(nim[i], nama[i], persen[i]);
-    
 }
