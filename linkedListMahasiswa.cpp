@@ -58,3 +58,36 @@ void cetakDaftar() {
     }
     cout << string(66, '-') << "\n";
 }
+
+// Hapus node paling depan
+void deleteHead() {
+    if (head == NULL) {
+        cout << "Daftar kosong, tidak ada yang dihapus.\n";
+        return;
+    }
+    Mahasiswa* hapus = head;
+    head = head->next;
+    cout << "Dihapus dari depan: " << hapus->nama << "\n";
+    delete hapus;
+}
+
+// Hapus node paling belakang
+void deleteLast() {
+    if (head == NULL) {
+        cout << "Daftar kosong, tidak ada yang dihapus.\n";
+        return;
+    }
+    if (head->next == NULL) {
+        cout << "Dihapus dari belakang: " << head->nama << "\n";
+        delete head;
+        head = NULL;
+        return;
+    }
+    Mahasiswa* bantu = head;
+    while (bantu->next->next != NULL) {
+        bantu = bantu->next;
+    }
+    cout << "Dihapus dari belakang: " << bantu->next->nama << "\n";
+    delete bantu->next;
+    bantu->next = NULL;
+}
