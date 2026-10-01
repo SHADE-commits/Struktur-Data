@@ -3,7 +3,6 @@
 #include <string>
 using namespace std;
 
-// Node: satu mahasiswa = satu node
 struct Mahasiswa {
     string nim;
     string nama;
@@ -12,8 +11,7 @@ struct Mahasiswa {
 };
 
 Mahasiswa* head = NULL;
-
-// Membuat node baru
+// 
 Mahasiswa* buatNode(string nim, string nama, float persen) {
     Mahasiswa* baru = new Mahasiswa;
     baru->nim = nim;
@@ -25,8 +23,8 @@ Mahasiswa* buatNode(string nim, string nama, float persen) {
 
 void insertHead(string nim, string nama, float persen) {
     Mahasiswa* baru = buatNode(nim, nama, persen);
-    baru->next = head;   // node baru menunjuk ke head lama
-    head = baru;         // head pindah ke node baru
+    baru->next = head;   
+    head = baru;         
 }
 
 void insertLast(string nim, string nama, float persen) {
@@ -59,7 +57,6 @@ void cetakDaftar() {
     cout << string(66, '-') << "\n";
 }
 
-// Hapus node paling depan
 void deleteHead() {
     if (head == NULL) {
         cout << "Daftar kosong, tidak ada yang dihapus.\n";
@@ -71,7 +68,6 @@ void deleteHead() {
     delete hapus;
 }
 
-// Hapus node paling belakang
 void deleteLast() {
     if (head == NULL) {
         cout << "Daftar kosong, tidak ada yang dihapus.\n";
@@ -90,4 +86,56 @@ void deleteLast() {
     cout << "Dihapus dari belakang: " << bantu->next->nama << "\n";
     delete bantu->next;
     bantu->next = NULL;
+}
+
+int main() {
+    isiDataAwal();   
+    int pilih;
+    string nim, nama;
+    float persen;
+
+    do {
+        cout << "\n=== MENU KEHADIRAN MAHASISWA (SINGLE LINKED LIST) ===\n";
+        cout << "1. Insert Head\n2. Insert Last\n3. Delete Head\n"
+             << "4. Delete Last\n5. Cetak Daftar\n0. Keluar\nPilih: ";
+        cin >> pilih;
+
+        if (pilih == 1 || pilih == 2) {
+            cout << "NIM: ";   cin >> nim;
+            cout << "Nama: ";  cin.ignore(); getline(cin, nama);
+            cout << "Persentase kehadiran: "; cin >> persen;
+            if (pilih == 1) insertHead(nim, nama, persen);
+            else insertLast(nim, nama, persen);
+            cout << "Data berhasil ditambahkan.\n";
+        } else if (pilih == 3) {
+            deleteHead();
+        } else if (pilih == 4) {
+            deleteLast();
+        } else if (pilih == 5) {
+            cetakDaftar();
+        } else if (pilih != 0) {
+            cout << "Pilihan tidak valid.\n";
+        }
+    } while (pilih != 0);
+
+    cout << "Program selesai.\n";
+    return 0;
+}
+
+void isiDataAwal() {
+    const int N = 15;
+    string nim[N] = {
+        "103032500005","103032500041","103032500146","103032500149","103032500150",
+        "103032500153","103032500159","103032500176","103032500180","103032500191",
+        "103032540001","103032540002","103032540003","103032540004","103032540005"};
+    string nama[N] = {
+        "Fadhil Asyam Damanik","Rahsya Iman Dehavilland","Mahesa Putra Mulyawan",
+        "Gyio Rangga Satria Putra","Naufal Nafiz Faturrahman","Fazli Baktiadi",
+        "Matthew Glen Abram Pakpahan","Vendra Fausta Andrean","Dzaky Allam Shidiq",
+        "Nayla Novtiera Anjani","Fathin Arib Nurhumam","Ida Bagus Harell",
+        "Nigel William Pieters","Aqila Fathatulayya","Badriah Nuraini Rahayu"};
+    float persen[N] = {100,93.8,87.5,100,81.3,75,93.8,100,
+                       68.8,87.5,100,93.8,81.3,100,75};
+    for (int i = 0; i < N; i++) insertLast(nim[i], nama[i], persen[i]);
+    
 }
